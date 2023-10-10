@@ -1,0 +1,5 @@
+"Story","Title","Result","Date","Stability","Duration (s)"
+"Verify carousel functionality","Verify carousel functionality","SUCCESS","2023-10-10T09:14:15.5782087-05:00[America/Bogota]","0.0","33.59"
+"Verify Links Functionality","Verify Links Functionality section home","SUCCESS","2023-10-09T20:39:42.6230435-05:00[America/Bogota]","0.0","52.71"
+"Verify Links Functionality","Verify Links Functionality section homeMBMOp","ERROR","2023-10-09T20:40:35.6859606-05:00[America/Bogota]","0.0","0.23"
+"Verify Form Registration Functionality","Verify Form Registration Functionality","SUCCESS","2023-10-10T09:49:09.3821505-05:00[America/Bogota]","0.0","47.37"

@@ -1,0 +1,71 @@
+plugins {
+    id 'java'
+    id 'java-library'
+    id 'jacoco'
+    id 'idea'
+    id 'application'
+    id 'org.sonarqube' version "3.3"
+    id "net.serenity-bdd.serenity-gradle-plugin" version "3.3.10"
+
+}
+defaultTasks 'clean', 'test', 'aggregate'
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
+}
+
+
+compileJava {
+    options.encoding('UTF-8')
+}
+compileTestJava {
+    options.encoding('UTF-8')
+}
+
+
+wrapper {
+    gradleVersion '7.4.1'
+    distributionType Wrapper.DistributionType.ALL
+}
+
+
+repositories {
+    mavenCentral()
+    }
+
+compileJava.options.encoding = "UTF-8"
+compileTestJava.options.encoding = "UTF-8"
+
+ext {
+    serenityVersion = '3.6.12'
+}
+dependencies {
+
+    testImplementation "net.serenity-bdd:serenity-cucumber:$serenityVersion"
+    implementation "net.serenity-bdd:serenity-ensure:$serenityVersion"
+    implementation "net.serenity-bdd:serenity-core:$serenityVersion"
+    implementation "net.serenity-bdd:serenity-junit:$serenityVersion"
+    implementation "net.serenity-bdd:serenity-screenplay:$serenityVersion"
+    implementation "net.serenity-bdd:serenity-screenplay-webdriver:$serenityVersion"
+    implementation "net.serenity-bdd:serenity-screenplay-rest:$serenityVersion"
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.13.4'
+    implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jdk8:2.13.4'
+    implementation 'com.github.javafaker:javafaker:1.0.2'
+    implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jdk8:2.13.4'
+    implementation 'junit:junit:4.13.2'
+    testImplementation 'org.slf4j:slf4j-simple:2.0.1'
+    implementation 'org.assertj:assertj-core:3.23.1'
+    implementation 'io.rest-assured:rest-assured:5.2.0'
+    testImplementation 'org.hamcrest:hamcrest:2.2'
+    compileOnly 'org.projectlombok:lombok:1.18.24'
+    annotationProcessor 'org.projectlombok:lombok:1.18.24'
+    testImplementation 'junit:junit:4.13.2'
+    compileOnly fileTree(dir: 'libs', include: '*.jar')
+    implementation(group: 'org.json', name: 'json', version: '20190722')
+    implementation group: 'io.github.bonigarcia', name: 'webdrivermanager', version: '5.4.1'
+}
+
+gradle.startParameter.continueOnFailure = true
+test.finalizedBy(aggregate)
+
